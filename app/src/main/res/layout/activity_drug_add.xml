@@ -4,15 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:onClick="onSaveButtonClick"
     tools:context=".drugAddActivity">
 
     <EditText
-        android:id="@+id/drugName"
+        android:id="@+id/drugNameInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:onClick="onSaveButtonClick"
         android:text="Drug Name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,7 +24,7 @@
         app:layout_constraintVertical_bias="0.050000012" />
 
     <EditText
-        android:id="@+id/drugPrice"
+        android:id="@+id/drugPriceInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -40,6 +42,7 @@
         android:id="@+id/buttonAddToList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="onSaveButtonClick"
         android:text="Save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

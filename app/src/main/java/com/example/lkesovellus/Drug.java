@@ -2,15 +2,16 @@ package com.example.lkesovellus;
 
 import java.util.ArrayList;
 
-public class Drug {
+public class Drug extends MainActivity{
 
     private String name;
     private String price;
-    private ArrayList<Drug> drugsListObject;
+    private int amount;
 
-    public Drug (String name, String price){
+    public Drug (String name, String price, int amount){
         name = this.name;
         price = this.price;
+        amount = this.amount;
     }
 
     public String getDrugName() {
@@ -21,8 +22,8 @@ public class Drug {
         return this.price;
     }
 
-    public ArrayList<Drug> getDrugsList (){
-        return drugsListObject;
+    public int getDrugAmount() {
+        return this.amount;
     }
 
     @Override
