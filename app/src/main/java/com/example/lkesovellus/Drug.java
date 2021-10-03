@@ -6,14 +6,12 @@ public class Drug {
 
     private String name;
     private String price;
-    private ArrayList<Drug> drugsList;
+    private ArrayList<Drug> drugsListObject;
 
     public Drug (String name, String price){
         name = this.name;
         price = this.price;
-        drugsList.add(new Drug(this.name, this.price));
     }
-
 
     public String getDrugName() {
         return this.name;
@@ -24,7 +22,7 @@ public class Drug {
     }
 
     public ArrayList<Drug> getDrugsList (){
-        return drugsList;
+        return drugsListObject;
     }
 
     @Override
