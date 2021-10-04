@@ -33,7 +33,6 @@ public class DrugAddActivity extends AppCompatActivity {
         Drug newDrug = new Drug(drugName.getText().toString(), drugPrice.getText().toString(), Integer.parseInt(drugAmount.getText().toString()));
         Global.getInstance().drugs.add(newDrug);
 
-
         Intent drugSaveActivity = new Intent(DrugAddActivity.this, MainActivity.class);
         startActivity(drugSaveActivity);
     }

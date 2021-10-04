@@ -7,9 +7,12 @@ public class Global {
 
     public ArrayList<Drug> drugs;
 
-    private static final Global ourInstance = new Global();
+    private static Global ourInstance;
 
     public static Global getInstance() {
+        if (ourInstance==null) {
+            ourInstance = new Global();
+        }
         return ourInstance;
     }
 
@@ -21,11 +24,15 @@ public class Global {
         return drugs;
     }
 
+    public String getName(){
+        return Global.getInstance().getDrugs().get(0).getDrugName();
+    }
 
 
-
+    
     @Override
     public String toString(){
         return Global.getInstance().getDrugs().get(0).toString();
     }
+
 }

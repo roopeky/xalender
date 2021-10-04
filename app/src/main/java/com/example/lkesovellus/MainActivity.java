@@ -47,6 +47,11 @@ public class MainActivity extends AppCompatActivity {
                 this, android.R.layout.simple_list_item_1, drugsList
         ));
 
+        Drug heroiini = new Drug("herska", "100",100);
+        Global.getInstance().drugs.add(heroiini);
+
+        tl.setText(Global.getInstance().getName());
+
         //ListView lv kuuntelija joka vaihtaa aktiviteetin drugInfoActivityyn
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
