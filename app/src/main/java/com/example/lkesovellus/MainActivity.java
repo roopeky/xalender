@@ -57,12 +57,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
         createNotificationChannel();
-        Button btNotification = findViewById(R.id.btNotification);
 
-        btNotification.setOnClickListener(new View.OnClickListener() {
+
+        Button btSetAlarm = findViewById(R.id.btSetAlarm);
+
+        btSetAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Moi", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Muistutus asetettu", Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(MainActivity.this, ReminderBroadcast.class);
                 PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0, intent, 0);
@@ -72,6 +74,20 @@ public class MainActivity extends AppCompatActivity {
                 long dayInMillisec = 1000 * 10;
 
                 alarmManager.set(RTC_WAKEUP, buttonClickTime + dayInMillisec, pendingIntent);
+            }
+        });
+
+        Button btCancelAlarm = findViewById(R.id.btCancelAlarm);
+
+        btCancelAlarm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Muistutus poistettu", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, ReminderBroadcast.class);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0, intent, 0);
+
+                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                alarmManager.cancel(pendingIntent);
             }
         });
 
@@ -86,9 +102,9 @@ public class MainActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void createNotificationChannel() {
-            CharSequence name = "ReminderChannel1";
+            CharSequence name = "Lääkesovellus";
             String description = "Channel 1";
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            int importance = NotificationManager.IMPORTANCE_HIGH;
             NotificationChannel channel = new NotificationChannel("channel1", name, importance);
             channel.setDescription(description);
 
