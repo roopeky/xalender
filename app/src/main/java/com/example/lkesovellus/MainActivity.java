@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private Button addButton;               // painike jolla lääkkeitä voi lisätä ja
     private ListView lv;                    //päänäkymän lista johon lääkkeet lisätään
     List<Drug> drugsList;                   // ArrayList johon lääkkeet lisätään (tulee olla myöhemmin <Drug> tyyppiä)
+    int i = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
