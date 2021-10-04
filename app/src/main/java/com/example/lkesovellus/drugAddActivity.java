@@ -16,7 +16,6 @@ public class drugAddActivity extends AppCompatActivity {
     private String name;
     private String price;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +28,7 @@ public class drugAddActivity extends AppCompatActivity {
 
     public void onSaveButtonClick (View v){
 
-        Drug newDrug = new Drug(drugName.getText().toString(), drugPrice.getText().toString(), 1);
+        Drug newDrug = new Drug(drugName.getText().toString(), drugPrice.getText().toString(), 30);
         Global.getInstance().drugs.add(newDrug);
 
         Intent drugSaveActivity = new Intent(drugAddActivity.this, MainActivity.class);
