@@ -2,7 +2,7 @@ package com.example.lkesovellus;
 
 import java.util.ArrayList;
 
-public class Drug extends MainActivity{
+public class Drug {
 
     private String name;
     private String price;
@@ -24,6 +24,18 @@ public class Drug extends MainActivity{
 
     public int getDrugAmount() {
         return this.amount;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
     @Override
