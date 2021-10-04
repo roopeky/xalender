@@ -1,14 +1,23 @@
 package com.example.lkesovellus;
 
+import static android.app.AlarmManager.*;
+
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private ListView lv;                    //päänäkymän lista johon lääkkeet lisätään
     List<Drug> drugsList;                   // Lista johon lääkkeet lisätään (tulee olla myöhemmin <Drug> tyyppiä)
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +51,27 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(drugInfoActivityWindow);
             }
         });
+
+        createNotificationChannel();
+        Button btNotification = findViewById(R.id.btNotification);
+
+        btNotification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Moi", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(MainActivity.this, ReminderBroadcast.class);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0, intent, 0);
+
+                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                long buttonClickTime = System.currentTimeMillis();
+                long dayInMillisec = 1000 * 60 * 60 * 24;
+
+                alarmManager.set(RTC_WAKEUP, buttonClickTime + dayInMillisec, pendingIntent);
+            }
+        });
+
+
     }
 
     // lisäyspainikkeen metodi joka vaihtaa aktiviteettiin drugAddActivity
@@ -48,4 +79,19 @@ public class MainActivity extends AppCompatActivity {
         Intent drugAddActivityWindow = new Intent(MainActivity.this, drugAddActivity.class);
         startActivity(drugAddActivityWindow);
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void createNotificationChannel() {
+            CharSequence name = "ReminderChannel1";
+            String description = "Channel 1";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("channel1", name, importance);
+            channel.setDescription(description);
+
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+
+
+    }
+
 }
