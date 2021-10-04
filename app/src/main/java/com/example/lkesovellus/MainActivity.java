@@ -17,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -26,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
     private Button addButton;               // painike jolla lääkkeitä voi lisätä ja
     private ListView lv;                    //päänäkymän lista johon lääkkeet lisätään
     List<Drug> drugsList;                   // Lista johon lääkkeet lisätään (tulee olla myöhemmin <Drug> tyyppiä)
+    public TextView tl;
+
+
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -34,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         addButton = findViewById(R.id.listAddButton);
         lv = findViewById(R.id.drugsListView);
+        tl = findViewById(R.id.testilaatikko);
 
         drugsList = Global.getInstance().getDrugs();
 
@@ -41,6 +46,11 @@ public class MainActivity extends AppCompatActivity {
         lv.setAdapter(new ArrayAdapter<Drug>(
                 this, android.R.layout.simple_list_item_1, drugsList
         ));
+
+        Drug heroiini = new Drug("herska", "100",100);
+        Global.getInstance().drugs.add(heroiini);
+
+        tl.setText(Global.getInstance().getName());
 
         //ListView lv kuuntelija joka vaihtaa aktiviteetin drugInfoActivityyn
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -91,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
 
     // lisäyspainikkeen metodi joka vaihtaa aktiviteettiin drugAddActivity
     public void onAddButtonClick(View v) {
-        Intent drugAddActivityWindow = new Intent(MainActivity.this, drugAddActivity.class);
+        Intent drugAddActivityWindow = new Intent(MainActivity.this, DrugAddActivity.class);
         startActivity(drugAddActivityWindow);
     }
 
@@ -105,8 +115,6 @@ public class MainActivity extends AppCompatActivity {
 
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
-
-
     }
 
 }
