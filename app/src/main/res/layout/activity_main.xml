@@ -36,15 +36,13 @@
         android:id="@+id/btSetAlarm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="172dp"
         android:background="@drawable/muistutus_nappi"
         android:backgroundTint="#EC0707"
         android:text="Muistuta 24h päästä"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/listAddButton"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.129"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.826" />
@@ -53,12 +51,14 @@
         android:id="@+id/btCancelAlarm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="69dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="121dp"
+        android:background="@drawable/muistutus_poisto"
         android:text="Poista muistutus"
-        app:layout_constraintEnd_toStartOf="@+id/listAddButton"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.113"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btSetAlarm" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.938" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 

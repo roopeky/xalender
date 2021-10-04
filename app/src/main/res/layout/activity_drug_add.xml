@@ -32,10 +32,10 @@
         android:text="Drug Price"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.052"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.13999999" />
+        app:layout_constraintVertical_bias="0.183" />
 
     <Button
         android:id="@+id/buttonAddToList"
@@ -57,14 +57,16 @@
         android:id="@+id/editTextNumber"
         android:layout_width="146dp"
         android:layout_height="46dp"
+        android:layout_marginStart="16dp"
         android:ems="10"
         android:inputType="number"
         android:text="Amount"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.84"
+        app:layout_constraintHorizontal_bias="0.052"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.13999999" />
+        app:layout_constraintVertical_bias="0.31" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
