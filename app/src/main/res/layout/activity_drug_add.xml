@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:onClick="onSaveButtonClick"
-    tools:context=".drugAddActivity">
+    tools:context=".DrugAddActivity">
 
     <EditText
         android:id="@+id/drugNameInput"
@@ -50,7 +50,7 @@
         app:layout_constraintVertical_bias="0.9" />
 
     <EditText
-        android:id="@+id/editTextNumber"
+        android:id="@+id/amountTextEdit"
         android:layout_width="146dp"
         android:layout_height="46dp"
         android:ems="10"

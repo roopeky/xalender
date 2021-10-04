@@ -15,7 +15,6 @@ public class DrugInfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drug_info);
-
     }
 
 

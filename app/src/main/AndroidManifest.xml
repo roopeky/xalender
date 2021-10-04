@@ -13,7 +13,7 @@
             android:name=".DrugInfoActivity"
             android:exported="true" />
         <activity
-            android:name=".drugAddActivity"
+            android:name=".DrugAddActivity"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
