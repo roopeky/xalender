@@ -17,13 +17,12 @@ public class ReminderBroadcast extends BroadcastReceiver {
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, mainactivity, 0);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "channel1")
-                .setSmallIcon(R.drawable.ic_launcher_background)
+                .setSmallIcon(R.drawable.ilmoitus_kuva)
                 .setContentTitle("Lääkesovellus")
                 .setContentText("Ota lääkkeet!")
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setAutoCancel(true)
                 .setContentIntent(pendingIntent);
-
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
 

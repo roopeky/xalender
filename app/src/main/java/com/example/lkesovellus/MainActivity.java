@@ -38,13 +38,6 @@ public class MainActivity extends AppCompatActivity {
         addButton = findViewById(R.id.listAddButton);
         lv = findViewById(R.id.drugsListView);
 
-        Drug burana = new Drug("burana", 100,100);
-        Drug panadol = new Drug("panadol", 100,100);
-        Global.getInstance().getDrugs().add(burana);
-        Global.getInstance().getDrugs().add(panadol);
-
-        Log.d("TAG", burana.toString());
-        Log.d("TAG", Global.getInstance().toString());
 
         //asettaa aloitusnäkymän ListViewille lv ArrayAdapterin ja hakee tiedot listasta drugsList
         lv.setAdapter(new ArrayAdapter<Drug>(
@@ -63,40 +56,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         createNotificationChannel();
-
-
-        Button btSetAlarm = findViewById(R.id.btSetAlarm);
-
-        btSetAlarm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Muistutus asetettu", Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent(MainActivity.this, ReminderBroadcast.class);
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0, intent, 0);
-
-                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-                long buttonClickTime = System.currentTimeMillis();
-                long dayInMillisec = 1000 * 10;
-
-                alarmManager.set(RTC_WAKEUP, buttonClickTime + dayInMillisec, pendingIntent);
-            }
-        });
-
-        Button btCancelAlarm = findViewById(R.id.btCancelAlarm);
-
-        btCancelAlarm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Muistutus poistettu", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(MainActivity.this, ReminderBroadcast.class);
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0, intent, 0);
-
-                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-                alarmManager.cancel(pendingIntent);
-            }
-        });
-
 
     }
 
