@@ -25,6 +25,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String EXTRA = "list position";
     private Button addButton;               // painike jolla lääkkeitä voi lisätä ja
     private ListView lv;                    //päänäkymän lista johon lääkkeet lisätään
     public TextView tl;
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent drugInfoActivityWindow = new Intent(MainActivity.this, DrugInfoActivity.class);
+                drugInfoActivityWindow.putExtra(EXTRA, i);
                 startActivity(drugInfoActivityWindow);
             }
         });
