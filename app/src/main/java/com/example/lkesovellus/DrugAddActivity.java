@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.text.DecimalFormat;
+
 public class DrugAddActivity extends AppCompatActivity {
 
     private Button saveButton;
@@ -16,6 +18,7 @@ public class DrugAddActivity extends AppCompatActivity {
     private EditText drugAmount;
     private String name;
     private String price;
+    DecimalFormat dF = new DecimalFormat("0.00");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

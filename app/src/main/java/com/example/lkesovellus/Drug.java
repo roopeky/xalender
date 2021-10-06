@@ -1,9 +1,5 @@
 package com.example.lkesovellus;
 
-import android.util.Log;
-
-import java.util.ArrayList;
-
 public class Drug {
 
     private String name;
@@ -20,7 +16,7 @@ public class Drug {
         return this.name;
     }
 
-    public int getDrugPrice() {
+    public double getDrugPrice() {
         return this.price;
     }
 

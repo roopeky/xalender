@@ -15,6 +15,8 @@ public class DrugInfoActivity extends AppCompatActivity {
     private TextView drugAmount;
     private TextView drugPrice;
     private int taken;
+    int infoAmountOfDrug;
+    double infoPriceOfDrug;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +31,11 @@ public class DrugInfoActivity extends AppCompatActivity {
         Bundle b = getIntent().getExtras();
         int i = b.getInt(MainActivity.EXTRA, 0);
 
+        int infoAmountOfDrug = Global.getInstance().getDrugs().get(i).getDrugAmount();
+        double infoPriceOfDrug = Global.getInstance().getDrugs().get(i).getDrugPrice();
+
         drugName.setText(Global.getInstance().getDrugs().get(i).getDrugName());
-        drugAmount.setText(("Doses left: " + Global.getInstance().getDrugs().get(i).getDrugAmount()) + "/" +
-                Global.getInstance().getDrugs().get(i).getDrugAmount());
-        drugPrice.setText(Global.getInstance().getDrugs().get(i).getDrugPrice() + "€, Cost per dose:" +
-                (Global.getInstance().getDrugs().get(i).getDrugAmount() / Global.getInstance().getDrugs().get(i).getDrugPrice()) + "€");
+        drugAmount.setText("Doses left: " + infoAmountOfDrug + "/" + infoAmountOfDrug);
+        drugPrice.setText(infoPriceOfDrug + "€, Cost per dose: " + (infoPriceOfDrug / infoAmountOfDrug) + "€");
     }
-
-
 }
