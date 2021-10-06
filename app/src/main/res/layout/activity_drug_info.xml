@@ -5,8 +5,8 @@
     android:id="@+id/drugNameTv"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DrugInfoActivity"
-    android:background="#303030">
+    android:background="#303030"
+    tools:context=".DrugInfoActivity">
 
 
     <Button
@@ -57,26 +57,57 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Amount"
-        android:textSize="16sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.07"
+        app:layout_constraintHorizontal_bias="0.02"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.20" />
+        app:layout_constraintVertical_bias="0.3" />
 
     <TextView
         android:id="@+id/drugPriceTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Price"
-        android:textSize="16sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.07"
+        app:layout_constraintHorizontal_bias="0.02"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.16" />
+        app:layout_constraintVertical_bias="0.18" />
+
+    <ProgressBar
+        android:id="@+id/amountProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="407dp"
+        android:layout_height="29dp"
+        android:max="10"
+        android:progress="0"
+        android:progressTint="#FF0000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.32999998" />
+
+    <Button
+        android:id="@+id/takeDrugButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/tallenna_nappi"
+        android:backgroundTint="#121111"
+        android:onClick="takeDrugButtonOnClick"
+        android:text="Take drug"
+        android:textColor="#303030"
+        app:backgroundTint="@color/red"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.39" />
 
     <EditText
         android:id="@+id/inputHour"
