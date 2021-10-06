@@ -12,6 +12,7 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -26,10 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button addButton;               // painike jolla lääkkeitä voi lisätä ja
     private ListView lv;                    //päänäkymän lista johon lääkkeet lisätään
-    List<Drug> drugsList;                   // Lista johon lääkkeet lisätään (tulee olla myöhemmin <Drug> tyyppiä)
     public TextView tl;
-
-
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -38,19 +36,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         addButton = findViewById(R.id.listAddButton);
         lv = findViewById(R.id.drugsListView);
-        tl = findViewById(R.id.testilaatikko);
 
-        drugsList = Global.getInstance().getDrugs();
+        Drug burana = new Drug("burana", 100,100);
+        Drug panadol = new Drug("panadol", 100,100);
+        Global.getInstance().getDrugs().add(burana);
+        Global.getInstance().getDrugs().add(panadol);
+
+        Log.d("TAG", burana.toString());
+        Log.d("TAG", Global.getInstance().toString());
 
         //asettaa aloitusnäkymän ListViewille lv ArrayAdapterin ja hakee tiedot listasta drugsList
         lv.setAdapter(new ArrayAdapter<Drug>(
-                this, android.R.layout.simple_list_item_1, drugsList
+                this, android.R.layout.simple_list_item_1, Global.getInstance().getDrugs()
         ));
 
-        Drug heroiini = new Drug("herska", "100",100);
-        Global.getInstance().drugs.add(heroiini);
-
-        tl.setText(Global.getInstance().getName());
 
         //ListView lv kuuntelija joka vaihtaa aktiviteetin drugInfoActivityyn
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {

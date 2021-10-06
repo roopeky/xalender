@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Global {
 
-    public ArrayList<Drug> drugs;
+    private ArrayList<Drug> drugs;
 
     private static Global ourInstance;
 
@@ -25,14 +25,6 @@ public class Global {
     }
 
     public String getName(){
-        return Global.getInstance().getDrugs().get(0).getDrugName();
+        return drugs.get(0).toString();
     }
-
-
-    
-    @Override
-    public String toString(){
-        return Global.getInstance().getDrugs().get(0).toString();
-    }
-
 }

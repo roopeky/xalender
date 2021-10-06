@@ -30,8 +30,8 @@ public class DrugAddActivity extends AppCompatActivity {
 
     public void onSaveButtonClick (View v){
 
-        Drug newDrug = new Drug(drugName.getText().toString(), drugPrice.getText().toString(), Integer.parseInt(drugAmount.getText().toString()));
-        Global.getInstance().drugs.add(newDrug);
+        Drug newDrug = new Drug(drugName.getText().toString(), Integer.parseInt(drugPrice.getText().toString()), Integer.parseInt(drugAmount.getText().toString()));
+        Global.getInstance().getDrugs().add(newDrug);
 
         Intent drugSaveActivity = new Intent(DrugAddActivity.this, MainActivity.class);
         startActivity(drugSaveActivity);

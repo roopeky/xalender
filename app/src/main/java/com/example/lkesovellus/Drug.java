@@ -1,24 +1,26 @@
 package com.example.lkesovellus;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 public class Drug {
 
     private String name;
-    private String price;
+    private int price;
     private int amount;
 
-    public Drug (String name, String price, int amount){
-        name = this.name;
-        price = this.price;
-        amount = this.amount;
+    public Drug (String name, int price, int amount){
+        this.name = name;
+        this.price = price;
+        this.amount = amount;
     }
 
     public String getDrugName() {
         return this.name;
     }
 
-    public String getDrugPrice() {
+    public int getDrugPrice() {
         return this.price;
     }
 
@@ -30,7 +32,7 @@ public class Drug {
         this.name = name;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
