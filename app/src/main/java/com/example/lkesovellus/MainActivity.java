@@ -38,12 +38,12 @@ public class MainActivity extends AppCompatActivity {
         addButton = findViewById(R.id.listAddButton);
         lv = findViewById(R.id.drugsListView);
 
+        createNotificationChannel();
 
         //asettaa aloitusnäkymän ListViewille lv ArrayAdapterin ja hakee tiedot listasta drugsList
         lv.setAdapter(new ArrayAdapter<Drug>(
                 this, android.R.layout.simple_list_item_1, Global.getInstance().getDrugs()
         ));
-
 
         //ListView lv kuuntelija joka vaihtaa aktiviteetin drugInfoActivityyn
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -54,8 +54,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(drugInfoActivityWindow);
             }
         });
-
-        createNotificationChannel();
 
     }
 
