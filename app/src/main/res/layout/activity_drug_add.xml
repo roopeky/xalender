@@ -4,38 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#303030"
     android:onClick="onSaveButtonClick"
     tools:context=".DrugAddActivity">
 
     <EditText
         android:id="@+id/drugNameInput"
-        android:layout_width="370dp"
+        android:layout_width="330dp"
         android:layout_height="51dp"
         android:layout_marginStart="16dp"
+        android:backgroundTint="#E60B0B"
         android:ems="10"
         android:hint="Name"
         android:inputType="textPersonName"
         android:onClick="onSaveButtonClick"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.050000012" />
+        app:layout_constraintVertical_bias="0.347" />
 
     <EditText
         android:id="@+id/drugPriceInput"
         android:layout_width="146dp"
         android:layout_height="46dp"
         android:layout_marginStart="16dp"
+        android:backgroundTint="@color/red"
         android:ems="10"
         android:hint="Price"
         android:inputType="textPersonName"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.052"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.13999999" />
+        app:layout_constraintVertical_bias="0.47" />
 
     <Button
         android:id="@+id/buttonAddToList"
@@ -45,8 +53,8 @@
         android:backgroundTint="#121111"
         android:onClick="onSaveButtonClick"
         android:text="Save"
-        android:textColor="#000000"
-        app:iconTint="#00AAFF"
+        android:textColor="#303030"
+        app:backgroundTint="@color/red"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,14 +65,29 @@
         android:id="@+id/amountTextEdit"
         android:layout_width="146dp"
         android:layout_height="46dp"
+        android:layout_marginStart="16dp"
+        android:backgroundTint="@color/red"
         android:ems="10"
         android:hint="Amount"
         android:inputType="number"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.84"
+        app:layout_constraintHorizontal_bias="0.052"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.13999999" />
+        app:layout_constraintVertical_bias="0.601" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="447dp"
+        android:layout_height="365dp"
+        android:layout_marginTop="-150dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ympyra" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,20 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#303030"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/listAddButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/add_nappi"
         android:onClick="onAddButtonClick"
         android:text="Add"
+        android:textColor="#303030"
+        app:backgroundTint="@color/red"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.87"
+        app:layout_constraintHorizontal_bias="0.863"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.94" />
+        app:layout_constraintVertical_bias="0.958" />
 
     <ListView
         android:id="@+id/drugsListView"
@@ -33,25 +37,32 @@
         android:id="@+id/btSetAlarm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="62dp"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/muistutus_nappi"
         android:text="Muistuta 24h päästä"
+        android:textColor="#303030"
+        app:backgroundTint="@color/red"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintHorizontal_bias="0.079"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.94" />
+        app:layout_constraintTop_toTopOf="@+id/btCancelAlarm" />
 
     <Button
         android:id="@+id/btCancelAlarm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/muistutus_poisto"
         android:text="Poista muistutus"
+        android:textColor="#303030"
+        app:backgroundTint="@color/red"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.07"
+        app:layout_constraintHorizontal_bias="0.069"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.86" />
+        app:layout_constraintVertical_bias="0.867" />
 
     <TextView
         android:id="@+id/testilaatikko"
