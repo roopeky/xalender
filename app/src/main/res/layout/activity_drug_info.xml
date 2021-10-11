@@ -21,7 +21,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.925" />
+        app:layout_constraintVertical_bias="0.945" />
 
     <Button
         android:id="@+id/btSetAlarm2"
@@ -37,7 +37,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.776" />
+        app:layout_constraintVertical_bias="0.802" />
 
     <TextView
         android:id="@+id/drugNameTextView"
@@ -111,17 +111,17 @@
 
     <EditText
         android:id="@+id/inputHour"
-        android:layout_width="29dp"
-        android:layout_height="47dp"
+        android:layout_width="40dp"
+        android:layout_height="48dp"
         android:ems="10"
         android:inputType="number"
         android:text="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.908"
+        app:layout_constraintHorizontal_bias="0.894"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.704" />
+        app:layout_constraintVertical_bias="0.685" />
 
     <TextView
         android:id="@+id/tvKysymys"
@@ -130,9 +130,9 @@
         android:text="Kuinka monen tunnin päähän muistutus laitetaan?"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.158"
+        app:layout_constraintHorizontal_bias="0.059"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.698" />
+        app:layout_constraintVertical_bias="0.676" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

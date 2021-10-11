@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private Button addButton;               // painike jolla lääkkeitä voi lisätä ja
     private ListView lv;                    //päänäkymän lista johon lääkkeet lisätään
     public TextView tl;
+    private Button memoActivityButton;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         addButton = findViewById(R.id.listAddButton);
         lv = findViewById(R.id.drugsListView);
+        memoActivityButton = findViewById(R.id.memoActivityButton);
 
         //asettaa aloitusnäkymän ListViewille lv ArrayAdapterin ja hakee tiedot listasta drugsList
         lv.setAdapter(new ArrayAdapter<Drug>(
@@ -55,8 +57,14 @@ public class MainActivity extends AppCompatActivity {
 
         createNotificationChannel();
 
+        memoActivityButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent memoActivity = new Intent(MainActivity.this, MemoActivity.class);
+                startActivity(memoActivity);
+            }
+        });
     }
-
     // lisäyspainikkeen metodi joka vaihtaa aktiviteettiin drugAddActivity
     public void onAddButtonClick(View v) {
         Intent drugAddActivityWindow = new Intent(MainActivity.this, DrugAddActivity.class);
@@ -65,14 +73,13 @@ public class MainActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void createNotificationChannel() {
-            CharSequence name = "Lääkesovellus";
-            String description = "Channel 1";
-            int importance = NotificationManager.IMPORTANCE_HIGH;
-            NotificationChannel channel = new NotificationChannel("channel1", name, importance);
-            channel.setDescription(description);
+        CharSequence name = "Lääkesovellus";
+        String description = "Channel 1";
+        int importance = NotificationManager.IMPORTANCE_HIGH;
+        NotificationChannel channel = new NotificationChannel("channel1", name, importance);
+        channel.setDescription(description);
 
-            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);
+        NotificationManager notificationManager = getSystemService(NotificationManager.class);
+        notificationManager.createNotificationChannel(channel);
     }
-
 }
