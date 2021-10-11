@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
         //asettaa aloitusnäkymän ListViewille lv ArrayAdapterin ja hakee tiedot listasta drugsList
         lv.setAdapter(new ArrayAdapter<Drug>(
-                this, android.R.layout.simple_list_item_1, Global.getInstance().getDrugs()
+                this, R.layout.mytextview, Global.getInstance().getDrugs()
         ));
 
         //ListView lv kuuntelija joka vaihtaa aktiviteetin drugInfoActivityyn
