@@ -37,7 +37,11 @@ public class Drug {
     }
 
     public void takeDrug() {
-        this.amount--;
+        if (this.amount > 0) {
+            this.amount--;
+        } else {
+            this.amount = 0;
+        }
     }
 
     @Override
