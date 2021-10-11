@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private ListView lv;                    //päänäkymän lista johon lääkkeet lisätään
     public TextView tl;
     private Button memoActivityButton;
+    int i;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
