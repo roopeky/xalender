@@ -21,6 +21,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.text.DecimalFormat;
 
+
+
 public class DrugInfoActivity extends AppCompatActivity {
 
     private TextView drugName;
@@ -33,8 +35,6 @@ public class DrugInfoActivity extends AppCompatActivity {
     private int i;
     private Button addButton;
     private EditText number;
-    public static final String SHARED_PREFS = "sharedprefs";
-    public static final String VALUE = "Amount taken";
     private int value;
 
     @Override
