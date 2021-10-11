@@ -1,15 +1,17 @@
 package com.example.lkesovellus;
 
 import static android.app.AlarmManager.RTC_WAKEUP;
+import static com.example.lkesovellus.MainActivity.EXTRA;
 import static java.lang.Math.round;
+import static java.lang.String.valueOf;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.style.UpdateLayout;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +19,6 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.text.DecimalFormat;
 
 public class DrugInfoActivity extends AppCompatActivity {
@@ -32,7 +33,9 @@ public class DrugInfoActivity extends AppCompatActivity {
     private int i;
     private Button addButton;
     private EditText number;
-
+    public static final String SHARED_PREFS = "sharedprefs";
+    public static final String VALUE = "Amount taken";
+    private int value;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,28 +46,30 @@ public class DrugInfoActivity extends AppCompatActivity {
         drugAmount = findViewById(R.id.drugAmountTextView);
         drugPrice = findViewById(R.id.drugPriceTextView);
         amountProgress = findViewById(R.id.amountProgressBar);
-        Log.d("TAG", "OnCreate()");
+
         Bundle b = getIntent().getExtras();
-        int i = b.getInt(MainActivity.EXTRA, 0);
-        final int[] infoAmountOfDrug = {Global.getInstance().getDrugs().get(i).getDrugAmount()};
+        int i = b.getInt(EXTRA, 0);
+
+        final int[] drugAmountEditable = {Global.getInstance().getDrugs().get(i).getDrugAmount()};
+        int drugAmountStatic = Global.getInstance().getDrugs().get(i).getDrugAmount();
         double infoPriceOfDrug = Global.getInstance().getDrugs().get(i).getDrugPrice();
 
         DecimalFormat moneyFormat = new DecimalFormat("0.00");
 
         drugName.setText(Global.getInstance().getDrugs().get(i).getDrugName());
-        drugAmount.setText("Annoksia: " + (infoAmountOfDrug[0]) + "/" + infoAmountOfDrug[0]);
-        drugPrice.setText(infoPriceOfDrug + "€, Hinta/kpl: " + moneyFormat.format(infoPriceOfDrug / infoAmountOfDrug[0]) + "€");
-        amountProgress.setMax(infoAmountOfDrug[0]);
-        amountProgress.setProgress(infoAmountOfDrug[0]);
-        Log.d("TAG", String.valueOf(infoAmountOfDrug[0]));
+        drugAmount.setText("Annoksia: " + ((drugAmountEditable[0]) - taken) + "/" + drugAmountStatic);
+        drugPrice.setText(infoPriceOfDrug + "€, Hinta/kpl: " + moneyFormat.format(infoPriceOfDrug / drugAmountStatic) + "€");
+        amountProgress.setMax(drugAmountStatic);
+        amountProgress.setProgress(drugAmountEditable[0] - taken);
 
         Button addButton = (Button) findViewById(R.id.takeDrugButton);
         addButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                    if (infoAmountOfDrug[0] > 0) {
-                        amountProgress.setProgress(infoAmountOfDrug[0]--);
+                    if (drugAmountEditable[0] > 0) {
+                        drugAmountEditable[0]--;
                         taken++;
-                        drugAmount.setText("Annoksia: " + infoAmountOfDrug[0] + "/" + (infoAmountOfDrug[0] + taken));
+                        drugAmount.setText("Annoksia: " + ((drugAmountEditable[0]) + "/" + drugAmountStatic));
+                        amountProgress.setProgress(drugAmountEditable[0]);
                         Toast.makeText(getApplicationContext(), Global.getInstance().getDrugs().get(i).getDrugName() +
                                 " otettu", Toast.LENGTH_SHORT).show();
                     } else {
