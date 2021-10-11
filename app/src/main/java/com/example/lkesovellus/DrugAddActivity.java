@@ -9,8 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import java.text.DecimalFormat;
-
 public class DrugAddActivity extends AppCompatActivity {
 
     private Button saveButton;
@@ -32,12 +30,13 @@ public class DrugAddActivity extends AppCompatActivity {
     }
 
     public void onSaveButtonClick (View v){
+        if (!drugName.getText().toString().equals("") || !drugPrice.getText().toString().equals("") || !drugAmount.getText().toString().equals(""))  {
+            Drug newDrug = new Drug(drugName.getText().toString(), Double.parseDouble(drugPrice.getText().toString()), Integer.parseInt(drugAmount.getText().toString()));
+            Global.getInstance().getDrugs().add(newDrug);
 
-        Drug newDrug = new Drug(drugName.getText().toString(), Integer.parseInt(drugPrice.getText().toString()), Integer.parseInt(drugAmount.getText().toString()));
-        Global.getInstance().getDrugs().add(newDrug);
-
-        Intent drugSaveActivity = new Intent(DrugAddActivity.this, MainActivity.class);
-        Log.d("TAG", String.valueOf(newDrug.getDrugAmount()));
-        startActivity(drugSaveActivity);
+            Intent drugSaveActivity = new Intent(DrugAddActivity.this, MainActivity.class);
+            Log.d("TAG", String.valueOf(newDrug.getDrugAmount()));
+            startActivity(drugSaveActivity);
+        }
     }
 }

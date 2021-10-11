@@ -3,10 +3,10 @@ package com.example.lkesovellus;
 public class Drug {
 
     private String name;
-    private int price;
+    private Double price;
     private int amount;
 
-    public Drug (String name, int price, int amount){
+    public Drug (String name, Double price, int amount){
         this.name = name;
         this.price = price;
         this.amount = amount;
@@ -28,12 +28,16 @@ public class Drug {
         this.name = name;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
     public void setAmount(int amount) {
         this.amount = amount;
+    }
+
+    public void takeDrug() {
+        this.amount--;
     }
 
     @Override
