@@ -33,6 +33,37 @@
 
     </ListView>
 
+    <Button
+        android:id="@+id/btSetAlarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="62dp"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/muistutus_nappi"
+        android:text="Muistuta 24h päästä"
+        android:textColor="#303030"
+        app:backgroundTint="@color/red"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.079"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btCancelAlarm" />
+
+    <Button
+        android:id="@+id/btCancelAlarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/muistutus_poisto"
+        android:text="Poista muistutus"
+        android:textColor="#303030"
+        app:backgroundTint="@color/red"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.069"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.867" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
