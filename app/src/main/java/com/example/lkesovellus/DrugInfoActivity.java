@@ -1,5 +1,7 @@
 package com.example.lkesovellus;
 
+import static java.lang.Math.round;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -12,6 +14,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
+
 public class DrugInfoActivity extends AppCompatActivity {
 
     private TextView drugName;
@@ -21,7 +25,7 @@ public class DrugInfoActivity extends AppCompatActivity {
     int infoAmountOfDrug;
     double infoPriceOfDrug;
     private ProgressBar amountProgress;
-    int i;
+    private int i;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,25 +39,27 @@ public class DrugInfoActivity extends AppCompatActivity {
         Log.d("TAG", "OnCreate()");
         Bundle b = getIntent().getExtras();
         int i = b.getInt(MainActivity.EXTRA, 0);
-
         int infoAmountOfDrug = Global.getInstance().getDrugs().get(i).getDrugAmount();
         double infoPriceOfDrug = Global.getInstance().getDrugs().get(i).getDrugPrice();
 
+        DecimalFormat moneyFormat = new DecimalFormat("0.00");
+
         drugName.setText(Global.getInstance().getDrugs().get(i).getDrugName());
-        drugAmount.setText("Doses left: " + (infoAmountOfDrug - 1) + "/" + infoAmountOfDrug);
-        drugPrice.setText(infoPriceOfDrug + "€, Cost per dose: " + (infoPriceOfDrug / infoAmountOfDrug) + "€");
+        drugAmount.setText("Doses left: " + (infoAmountOfDrug) + "/" + infoAmountOfDrug);
+        drugPrice.setText(infoPriceOfDrug + "€, Cost per dose: " + moneyFormat.format(infoPriceOfDrug / infoAmountOfDrug)+ "€");
         amountProgress.setMax(infoAmountOfDrug);
         amountProgress.setProgress(infoAmountOfDrug);
+        Log.d("TAG", String.valueOf(infoAmountOfDrug));
     }
 
     public void takeDrugButtonOnClick(View v) {
-        infoAmountOfDrug = infoAmountOfDrug - 1;
         Log.d("TAG", String.valueOf(infoAmountOfDrug));
-        Global.getInstance().getDrugs().get(i).setAmount(infoAmountOfDrug);
+        Log.d("TAG", String.valueOf(infoAmountOfDrug));
+        Global.getInstance().getDrugs().get(i).takeDrug();
+        drugName.setText(Global.getInstance().getName() + "testi");
         amountProgress.setProgress(infoAmountOfDrug);
-        drugAmount.setText(String.valueOf(infoAmountOfDrug - 1));
+        drugAmount.setText(String.valueOf(infoAmountOfDrug));
         Toast.makeText(getApplicationContext(),Global.getInstance().getDrugs().get(i).getDrugName() +
                 " taken",Toast.LENGTH_SHORT).show();
     }
-
 }
