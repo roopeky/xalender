@@ -1,4 +1,4 @@
-package com.example.lkesovellus;
+package com.example.lkesovellus.classes;
 
 /**
  * Luokka Drug joka mallintaa lisättävien lääkkeiden ominaisuuksia
@@ -14,12 +14,12 @@ public class Drug {
 
     /**
      * Luokan Drug konstruktori jonka avulla Drug tyyppisiä olioita luodaan
-     * @param name Määritettää Drug-olion nimen, oltava merkkijono
-     * @param price Määrittää Drug-olion hinnan, oltava positiivinen
-     * @param amount Määrittää Drug-olion määrän, oltava positiivinen
+     * @param name Määrittää Drug-olion nimen, oltava merkkijono
+     * @param price Määrittää Drug-olion hinnan
+     * @param amount Määrittää Drug-olion määrän
      */
     public Drug (String name, Double price, int amount){
-        this.name = name;           // this-sana viittaa koodia suorittavaan olioon
+        this.name = name;
         this.price = price;
         this.amount = amount;
     }
@@ -43,10 +43,6 @@ public class Drug {
      */
     public int getDrugAmount() {
         return this.amount;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     /**

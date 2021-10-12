@@ -1,7 +1,7 @@
-package com.example.lkesovellus;
+package com.example.lkesovellus.Activities;
 
 import static android.app.AlarmManager.RTC_WAKEUP;
-import static com.example.lkesovellus.MainActivity.EXTRA;
+import static com.example.lkesovellus.Activities.MainActivity.EXTRA;
 import static java.lang.Math.round;
 import static java.lang.String.valueOf;
 
@@ -12,13 +12,17 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.lkesovellus.classes.Global;
+import com.example.lkesovellus.R;
+import com.example.lkesovellus.classes.ReminderBroadcast;
+
 import java.text.DecimalFormat;
 
 
@@ -35,7 +39,13 @@ public class DrugInfoActivity extends AppCompatActivity {
     private int i;
     private Button addButton;
     private EditText number;
-    private int value;
+    public static final String SHARED_PREFS = "sharedprefs";
+    public static String VALUE = "taken";
+
+
+    /**
+     * Kutsutaan aktiviteetiin luonnin yhteydessä
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +60,14 @@ public class DrugInfoActivity extends AppCompatActivity {
         Bundle b = getIntent().getExtras();
         int i = b.getInt(EXTRA, 0);
 
+        VALUE = Global.getInstance().getDrugs().get(i).getDrugName();
+
         final int[] drugAmountEditable = {Global.getInstance().getDrugs().get(i).getDrugAmount()};
         int drugAmountStatic = Global.getInstance().getDrugs().get(i).getDrugAmount();
         double infoPriceOfDrug = Global.getInstance().getDrugs().get(i).getDrugPrice();
+
+        SharedPreferences sp = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        taken = Integer.parseInt(sp.getString(VALUE, "0"));
 
         DecimalFormat moneyFormat = new DecimalFormat("0.00");
 
@@ -65,13 +80,17 @@ public class DrugInfoActivity extends AppCompatActivity {
         Button addButton = (Button) findViewById(R.id.takeDrugButton);
         addButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                    if (drugAmountEditable[0] > 0) {
-                        drugAmountEditable[0]--;
+                    if (!(drugAmountEditable[0] == taken)) {
                         taken++;
-                        drugAmount.setText("Annoksia: " + ((drugAmountEditable[0]) + "/" + drugAmountStatic));
-                        amountProgress.setProgress(drugAmountEditable[0]);
+                        drugAmount.setText("Annoksia: " + (((drugAmountEditable[0]) - taken) + "/" + drugAmountStatic));
+                        amountProgress.setProgress((drugAmountEditable[0]) - taken);
                         Toast.makeText(getApplicationContext(), Global.getInstance().getDrugs().get(i).getDrugName() +
                                 " otettu", Toast.LENGTH_SHORT).show();
+                        SharedPreferences sp = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sp.edit();
+
+                        editor.putString(VALUE, valueOf(taken));
+                        editor.apply();
                     } else {
                         Toast.makeText(getApplicationContext(),"Lääkkeet loppu!", Toast.LENGTH_SHORT).show();
                     }
@@ -83,18 +102,24 @@ public class DrugInfoActivity extends AppCompatActivity {
         btSetAlarm2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Muistutus asetettu", Toast.LENGTH_SHORT).show();
+
                 number = findViewById(R.id.inputHour);
-                int hours = Integer.parseInt(number.getText().toString());
 
-                Intent intent = new Intent(DrugInfoActivity.this, ReminderBroadcast.class);
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(DrugInfoActivity.this, 0, intent, 0);
+                if (!(number.getText().toString().equals(""))) {
+                    int hours = Integer.parseInt(number.getText().toString());
+                    Intent intent = new Intent(DrugInfoActivity.this, ReminderBroadcast.class);
+                    PendingIntent pendingIntent = PendingIntent.getBroadcast(DrugInfoActivity.this, 0, intent, 0);
 
-                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-                long buttonClickTime = System.currentTimeMillis();
-                long dayInMillisecond = 1000 * hours;
+                    AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                    long buttonClickTime = System.currentTimeMillis();
+                    long dayInMillisecond = 1000 * hours;
 
-                alarmManager.set(RTC_WAKEUP, buttonClickTime + dayInMillisecond, pendingIntent);
+                    Toast.makeText(getApplicationContext(), "Muistutus asetettu", Toast.LENGTH_SHORT).show();
+
+                    alarmManager.set(RTC_WAKEUP, buttonClickTime + dayInMillisecond, pendingIntent);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Anna aika!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

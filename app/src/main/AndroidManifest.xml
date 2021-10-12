@@ -10,16 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Lääkesovellus">
         <activity
-            android:name=".MemoActivity"
+            android:name=".Activities.MemoActivity"
             android:exported="true" />
         <activity
-            android:name=".DrugInfoActivity"
+            android:name=".Activities.DrugInfoActivity"
             android:exported="true" />
         <activity
-            android:name=".DrugAddActivity"
+            android:name=".Activities.DrugAddActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".ReminderBroadcast" />
+        <receiver android:name=".classes.ReminderBroadcast" />
     </application>
 
 </manifest>

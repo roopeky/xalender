@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#303030"
-    tools:context=".MainActivity">
+    tools:context=".Activities.MainActivity">
 
     <Button
         android:id="@+id/listAddButton"
@@ -13,8 +13,9 @@
         android:layout_height="wrap_content"
         android:background="@drawable/add_nappi"
         android:onClick="onAddButtonClick"
-        android:text="Add"
+        android:text="+"
         android:textColor="#303030"
+        android:textSize="48sp"
         app:backgroundTint="@color/red"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

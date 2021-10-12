@@ -1,4 +1,4 @@
-package com.example.lkesovellus;
+package com.example.lkesovellus.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.lkesovellus.R;
 
 public class MemoActivity extends AppCompatActivity {
     private TextView textView;

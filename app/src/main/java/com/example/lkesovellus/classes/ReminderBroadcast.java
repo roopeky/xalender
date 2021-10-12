@@ -1,4 +1,4 @@
-package com.example.lkesovellus;
+package com.example.lkesovellus.classes;
 
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -8,6 +8,9 @@ import android.os.Bundle;
 
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+
+import com.example.lkesovellus.Activities.MainActivity;
+import com.example.lkesovellus.R;
 
 public class ReminderBroadcast extends BroadcastReceiver {
 

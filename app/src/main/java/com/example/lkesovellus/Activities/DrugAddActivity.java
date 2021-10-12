@@ -1,14 +1,18 @@
-package com.example.lkesovellus;
+package com.example.lkesovellus.Activities;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.lkesovellus.classes.Drug;
+import com.example.lkesovellus.classes.Global;
+import com.example.lkesovellus.R;
 
 /**
  * Aktiviteetti joka sisältää toiminnallisuuden lääkkeiden lisäämiseen
@@ -16,6 +20,7 @@ import android.widget.Toast;
  * Sisältää onClick kuuntelijan painikkeelle SaveButton
  * @Author Emil Suuronen
  */
+
 public class DrugAddActivity extends AppCompatActivity {
 
     private Button saveButton;  // Muuttuja aktiviteetin painikkeelle save
@@ -48,7 +53,7 @@ public class DrugAddActivity extends AppCompatActivity {
      * Esittää ilmoituksen mikäli kaikissa kentissä ei ole syötettä
      */
     public void onSaveButtonClick (View v){
-        if (!drugName.getText().toString().equals("") || !drugPrice.getText().toString().equals("") || // if-lauseke joka tarkistaa onko kaikissa tekstikentissä syötettä
+        if (!drugName.getText().toString().equals("") && !drugPrice.getText().toString().equals("") && // if-lauseke joka tarkistaa onko kaikissa tekstikentissä syötettä
                 !drugAmount.getText().toString().equals(""))  {
             Drug newDrug = new Drug(drugName.getText().toString(),      // Luo uuden Drug olion jossa olion parametrit haetaan tekstikenttien syötteestä
                     Double.parseDouble(drugPrice.getText().toString()), // toString muuttaa tekstikentän syötteen merkkijonoksi

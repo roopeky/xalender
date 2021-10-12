@@ -1,7 +1,6 @@
-package com.example.lkesovellus;
+package com.example.lkesovellus.classes;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Luokka Global
@@ -13,22 +12,23 @@ public class Global {
 
     private ArrayList<Drug> drugs;
 
-    private static Global ourInstance;
+    private static Global instance;
 
     /**
-     * @return palauttaa Singletonin instanssin
+     * Mikäli metodia kutsuttaessa instance ei vielä viittaa mihinkään Global-olioon
+     * Luodaan uusi Global-olio ja määritetään se instance olion arvoksi
+     * @return palauttaa Singletonin instanssin instance
      */
 
     public static Global getInstance() {
-        if (ourInstance==null) {
-            ourInstance = new Global();
+        if (instance == null) {
+            instance = new Global();
         }
-        return ourInstance;
+        return instance;
     }
 
-
     private Global() {                  // Global luokan konstruktori, kutsuttaessa luo uuden ArrayListin
-        this.drugs = new ArrayList();   //"this" viittaa olioon joka suorittaa koodia
+        this.drugs = new ArrayList();
     }
 
     /**
@@ -38,8 +38,4 @@ public class Global {
     public ArrayList<Drug> getDrugs() {
         return drugs;
     }
-
-    /**
-     * @return palauttaa
-     */
 }

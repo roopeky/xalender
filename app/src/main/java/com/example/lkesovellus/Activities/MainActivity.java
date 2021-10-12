@@ -1,27 +1,23 @@
-package com.example.lkesovellus;
-
-import static android.app.AlarmManager.*;
+package com.example.lkesovellus.Activities;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.List;
+import com.example.lkesovellus.classes.Drug;
+import com.example.lkesovellus.classes.Global;
+import com.example.lkesovellus.R;
 
 public class MainActivity extends AppCompatActivity {
 
