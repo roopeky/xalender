@@ -38,6 +38,9 @@ public class DrugInfoActivity extends AppCompatActivity {
     private ProgressBar amountProgress;
     private int i;
     private Button addButton;
+    /**
+     *
+     */
     private EditText number;
     public static final String SHARED_PREFS = "sharedprefs";
     public static String VALUE = "taken";
@@ -46,7 +49,6 @@ public class DrugInfoActivity extends AppCompatActivity {
     /**
      * Kutsutaan aktiviteetiin luonnin yhteydessä
      */
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,39 +98,54 @@ public class DrugInfoActivity extends AppCompatActivity {
                     }
             }
         });
-
+        /**
+         * Määrittää mistä btSetAlarm2 nappi löytyy
+         */
         Button btSetAlarm2 = findViewById(R.id.btSetAlarm2);
-
+        /**
+         * Kutsuu onClick metodia klikatessa
+         */
         btSetAlarm2.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Tarkastaa, että number EditTextissä on numero ja tekee muistutuksen tietyn ajan päähän
+             * @param view nykyinen näkymä
+             */
             @Override
             public void onClick(View view) {
+                number = findViewById(R.id.inputHour);                                              // Määrittää mistä number löytyy
 
-                number = findViewById(R.id.inputHour);
-
-                if (!(number.getText().toString().equals(""))) {
+                if (!(number.getText().toString().equals(""))) {                                    // Tarkastaa että number edittextin kohdalla on joku numero
                     int hours = Integer.parseInt(number.getText().toString());
-                    Intent intent = new Intent(DrugInfoActivity.this, ReminderBroadcast.class);
+                    Intent intent = new Intent(DrugInfoActivity.this, ReminderBroadcast.class);   // Uusi intentti
                     PendingIntent pendingIntent = PendingIntent.getBroadcast(DrugInfoActivity.this, 0, intent, 0);
 
-                    AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-                    long buttonClickTime = System.currentTimeMillis();
-                    long dayInMillisecond = 1000 * hours;
+                    AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);     // Luodaan AlarmManager, jonka avulla saadaan ilmoitus tulemaan tiettyyn aikaan
+                    long buttonClickTime = System.currentTimeMillis();                              // Kertoo kuinka monta millisekunttia on mennyt 1.1.1970 - nykypäivään asti
+                    long dayInMillisecond = 1000 * 60 * 60 * hours;                                 // Kertoo ajan minkä päähän ilmoitus lopulta tulee
 
-                    Toast.makeText(getApplicationContext(), "Muistutus asetettu", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Muistutus asetettu", Toast.LENGTH_SHORT).show(); // Pop-up ilmoitus, kun muistutus asetetaan oikealla number arvolla
 
-                    alarmManager.set(RTC_WAKEUP, buttonClickTime + dayInMillisecond, pendingIntent);
+                    alarmManager.set(RTC_WAKEUP, buttonClickTime + dayInMillisecond, pendingIntent);   // RTC-wakeup herättää sovelluksen kun ilmoitus tulee
                 } else {
-                    Toast.makeText(getApplicationContext(), "Anna aika!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Anna aika!", Toast.LENGTH_SHORT).show();  // Pop-up ilmoitus, kun number edittextiin laitetaan väärä arvo
                 }
             }
         });
-
+        /**
+         * Määrittää mistä btCancelAlarm2 nappi löytyy
+         */
         Button btCancelAlarm2 = findViewById(R.id.btCancelAlarm2);
-
+        /**
+         * Kutsuu onClick metodia klikatessa
+         */
         btCancelAlarm2.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Poistaa aktiivisen muistutuksen. Metodi hylkää kaikki samat asiat ja arvot, mitä ilmoituksen tekemiseen on laitettu
+             * @param view nykyinen näkymä
+             */
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Muistutus poistettu", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Muistutus poistettu", Toast.LENGTH_SHORT).show();      // pop-up ilmoitus muistutuksen poistumisesta
                 Intent intent = new Intent(DrugInfoActivity.this, ReminderBroadcast.class);
                 PendingIntent pendingIntent = PendingIntent.getBroadcast(DrugInfoActivity.this, 0, intent, 0);
                 AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);

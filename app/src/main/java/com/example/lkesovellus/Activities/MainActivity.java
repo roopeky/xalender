@@ -18,15 +18,24 @@ import android.widget.TextView;
 import com.example.lkesovellus.classes.Drug;
 import com.example.lkesovellus.classes.DrugData;
 import com.example.lkesovellus.R;
-
+/**
+ * Luokka luo etusivu näkymän
+ * @author Roope Kylli, Topias Koskinen, Emil Suuronen
+ * @version 1.0
+ */
 public class MainActivity extends AppCompatActivity {
 
     public static final String EXTRA = "list position";
     private Button addButton;               // painike jolla lääkkeitä voi lisätä ja
     private ListView lv;                    //päänäkymän lista johon lääkkeet lisätään
     public TextView tl;
+    /**
+     * Nappi muistiinpano näkymään
+     */
     private Button memoActivityButton;
-
+    /**
+     * Kutsutaan aktiviteetiin luonnin yhteydessä
+     */
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +60,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        createNotificationChannel();
+        createNotificationChannel();                                                                // metodia kutsutaan, kun laite avataan
 
         memoActivityButton.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Klikatessa avaa näkymän memoActivity
+             * @param view on mainactivy näkymä
+             */
             @Override
             public void onClick(View view) {
                 Intent memoActivity = new Intent(MainActivity.this, MemoActivity.class);
@@ -67,15 +80,18 @@ public class MainActivity extends AppCompatActivity {
         startActivity(drugAddActivityWindow);
     }
 
+    /**
+     * Metodi luo kanavan reminderChannel muistutukselle
+     */
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void createNotificationChannel() {
-        CharSequence name = "Lääkesovellus";
-        String description = "Channel 1";
-        int importance = NotificationManager.IMPORTANCE_HIGH;
-        NotificationChannel channel = new NotificationChannel("channel1", name, importance);
+        CharSequence name = "Lääkesovellus";                                                        // Channelin nimi
+        String description = "Channel 1";                                                           // Channelin kuvaus
+        int importance = NotificationManager.IMPORTANCE_HIGH;                                       // Importance level. IMPORTANCE_HIGH = ilmoitus tekee äänen ja näkyy kaikkialla puhelimessa
+        NotificationChannel channel = new NotificationChannel("channel1", name, importance);     // Luodaan olio muuttuja channel, jolla on id, nimi ja importance level
         channel.setDescription(description);
 
         NotificationManager notificationManager = getSystemService(NotificationManager.class);
-        notificationManager.createNotificationChannel(channel);
+        notificationManager.createNotificationChannel(channel);                                     // Rakentaa kanavan olio channelin arvoilla
     }
 }
