@@ -1,6 +1,5 @@
 package com.example.lkesovellus.Activities;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,7 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.lkesovellus.classes.Drug;
-import com.example.lkesovellus.classes.Global;
+import com.example.lkesovellus.classes.DrugData;
 import com.example.lkesovellus.R;
 
 /**
@@ -58,7 +57,7 @@ public class DrugAddActivity extends AppCompatActivity {
             Drug newDrug = new Drug(drugName.getText().toString(),      // Luo uuden Drug olion jossa olion parametrit haetaan tekstikenttien syötteestä
                     Double.parseDouble(drugPrice.getText().toString()), // toString muuttaa tekstikentän syötteen merkkijonoksi
                     Integer.parseInt(drugAmount.getText().toString())); // Double.parseDouble & Integer.parseInt muuttavat tekstikentän syötteen Drug olion vaatimaksi
-            Global.getInstance().getDrugs().add(newDrug);               // Kutsuu Global luokan instanssia ja sen tekemää listaa sekä lisää luodun Drug-olion sille
+            DrugData.getInstance().getDrugs().add(newDrug);               // Kutsuu Global luokan instanssia ja sen tekemää listaa sekä lisää luodun Drug-olion sille
             Intent drugSaveActivity = new Intent(DrugAddActivity.this, MainActivity.class);
             startActivity(drugSaveActivity);
         } else {

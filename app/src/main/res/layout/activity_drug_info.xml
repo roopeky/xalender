@@ -104,7 +104,7 @@
         android:background="@drawable/tallenna_nappi"
         android:backgroundTint="#121111"
         android:onClick="takeDrugButtonOnClick"
-        android:text="Take drug"
+        android:text="Ota lääke"
         android:textColor="#303030"
         app:backgroundTint="@color/red"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -8,11 +8,11 @@ import java.util.ArrayList;
  * @author Emil Suuronen
  */
 
-public class Global {
+public class DrugData {
 
     private ArrayList<Drug> drugs;
 
-    private static Global instance;
+    private static DrugData instance;
 
     /**
      * Mikäli metodia kutsuttaessa instance ei vielä viittaa mihinkään Global-olioon
@@ -20,14 +20,14 @@ public class Global {
      * @return palauttaa Singletonin instanssin instance
      */
 
-    public static Global getInstance() {
+    public static DrugData getInstance() {
         if (instance == null) {
-            instance = new Global();
+            instance = new DrugData();
         }
         return instance;
     }
 
-    private Global() {                  // Global luokan konstruktori, kutsuttaessa luo uuden ArrayListin
+    private DrugData() {                  // Global luokan konstruktori, kutsuttaessa luo uuden ArrayListin
         this.drugs = new ArrayList();
     }
 

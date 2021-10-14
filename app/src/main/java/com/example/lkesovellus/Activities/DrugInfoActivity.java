@@ -19,7 +19,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.lkesovellus.classes.Global;
+import com.example.lkesovellus.classes.DrugData;
 import com.example.lkesovellus.R;
 import com.example.lkesovellus.classes.ReminderBroadcast;
 
@@ -60,18 +60,18 @@ public class DrugInfoActivity extends AppCompatActivity {
         Bundle b = getIntent().getExtras();
         int i = b.getInt(EXTRA, 0);
 
-        VALUE = Global.getInstance().getDrugs().get(i).getDrugName();
+        VALUE = DrugData.getInstance().getDrugs().get(i).getDrugName();
 
-        final int[] drugAmountEditable = {Global.getInstance().getDrugs().get(i).getDrugAmount()};
-        int drugAmountStatic = Global.getInstance().getDrugs().get(i).getDrugAmount();
-        double infoPriceOfDrug = Global.getInstance().getDrugs().get(i).getDrugPrice();
+        final int[] drugAmountEditable = {DrugData.getInstance().getDrugs().get(i).getDrugAmount()};
+        int drugAmountStatic = DrugData.getInstance().getDrugs().get(i).getDrugAmount();
+        double infoPriceOfDrug = DrugData.getInstance().getDrugs().get(i).getDrugPrice();
 
         SharedPreferences sp = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         taken = Integer.parseInt(sp.getString(VALUE, "0"));
 
         DecimalFormat moneyFormat = new DecimalFormat("0.00");
 
-        drugName.setText(Global.getInstance().getDrugs().get(i).getDrugName());
+        drugName.setText(DrugData.getInstance().getDrugs().get(i).getDrugName());
         drugAmount.setText("Annoksia: " + ((drugAmountEditable[0]) - taken) + "/" + drugAmountStatic);
         drugPrice.setText(infoPriceOfDrug + "€, Hinta/kpl: " + moneyFormat.format(infoPriceOfDrug / drugAmountStatic) + "€");
         amountProgress.setMax(drugAmountStatic);
@@ -84,7 +84,7 @@ public class DrugInfoActivity extends AppCompatActivity {
                         taken++;
                         drugAmount.setText("Annoksia: " + (((drugAmountEditable[0]) - taken) + "/" + drugAmountStatic));
                         amountProgress.setProgress((drugAmountEditable[0]) - taken);
-                        Toast.makeText(getApplicationContext(), Global.getInstance().getDrugs().get(i).getDrugName() +
+                        Toast.makeText(getApplicationContext(), DrugData.getInstance().getDrugs().get(i).getDrugName() +
                                 " otettu", Toast.LENGTH_SHORT).show();
                         SharedPreferences sp = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
                         SharedPreferences.Editor editor = sp.edit();

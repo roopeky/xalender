@@ -16,7 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.lkesovellus.classes.Drug;
-import com.example.lkesovellus.classes.Global;
+import com.example.lkesovellus.classes.DrugData;
 import com.example.lkesovellus.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         //asettaa aloitusnäkymän ListViewille lv ArrayAdapterin ja hakee tiedot listasta drugsList
         lv.setAdapter(new ArrayAdapter<Drug>(
-                this, R.layout.mytextview, Global.getInstance().getDrugs()
+                this, R.layout.mytextview, DrugData.getInstance().getDrugs()
         ));
 
         //ListView lv kuuntelija joka vaihtaa aktiviteetin drugInfoActivityyn

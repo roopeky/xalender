@@ -29,12 +29,12 @@
 
     <ListView
         android:id="@+id/drugsListView"
-        android:layout_marginTop="120dp"
+        android:layout_width="410dp"
+        android:layout_height="488dp"
+        android:clickable="true"
         android:divider="@color/red"
         android:dividerHeight="4px"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.863"
         app:layout_constraintStart_toStartOf="parent"
