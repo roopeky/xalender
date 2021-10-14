@@ -7,8 +7,7 @@
     android:background="#303030"
     tools:context=".Activities.MemoActivity">
 
-    <!--author Topias Koskinen-->
-
+    <!--@author Roope Kylli tähän tulee näkyviin muistiinpanot-->
     <TextView
         android:id="@+id/textView"
         android:layout_width="352dp"
@@ -22,6 +21,7 @@
         app:layout_constraintTop_toTopOf="@+id/textView10"
         app:layout_constraintVertical_bias="0.178" />
 
+    <!--@author Roope Kylli käyttäjä kirjoittaa tähän muistiinopanot-->
     <EditText
         android:id="@+id/editText"
         android:layout_width="411dp"
@@ -37,6 +37,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.173" />
 
+    <!--@author Roope Kylli tallentaa käyttäjän muistiinpanot-->
     <Button
         android:id="@+id/memoSaveButton"
         android:layout_width="135dp"
@@ -80,6 +81,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.405" />
 
+    <!--@author Roope Kylli tyhjentää muistiinpanot-->
     <Button
         android:id="@+id/memoClearButton"
         android:layout_width="wrap_content"

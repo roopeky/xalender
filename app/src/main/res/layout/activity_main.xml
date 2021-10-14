@@ -7,8 +7,7 @@
     android:background="#303030"
     tools:context=".Activities.MainActivity">
 
-    <!--author Topias Koskinen-->
-
+    <!--@author Topias Koskinen plus nappi mainviewssä siirtää näkymän DrugAddActivityyn-->
     <Button
 
         android:id="@+id/listAddButton"
@@ -27,6 +26,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.958" />
 
+    <!--@author Topias Koskinen listView johon lisätyt lääkkeet tulevat hakee fontin
+     ja värit mytextview.xml-->
     <ListView
         android:id="@+id/drugsListView"
         android:layout_width="410dp"
@@ -42,6 +43,7 @@
 
     </ListView>
 
+    <!--@author Topias Koskinen nappi joka siirtää näkymän MemoActivityyn-->
     <Button
         android:id="@+id/memoActivityButton"
         android:layout_width="wrap_content"
@@ -56,7 +58,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.954" />
-
+    <!--@author Roope Kylli Xalender logo-->
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="302dp"

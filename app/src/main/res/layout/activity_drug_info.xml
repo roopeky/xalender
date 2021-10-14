@@ -8,8 +8,7 @@
     android:background="#303030"
     tools:context=".Activities.DrugInfoActivity">
 
-<!--author Topias Koskinen-->
-
+    <!--@author Topias Koskinen nappi joka poistaa asetetun muistutuksen-->
     <Button
         android:id="@+id/btCancelAlarm2"
         android:layout_width="wrap_content"
@@ -24,6 +23,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.946" />
 
+    <!--@author Topias Koskinen asettaa muistutuksen-->
     <Button
         android:id="@+id/btSetAlarm2"
         android:layout_width="wrap_content"
@@ -40,6 +40,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.802" />
 
+    <!--@author Roope Kylli näyttää annetun lääkkeen nimen-->
     <TextView
         android:id="@+id/drugNameTextView"
         android:layout_width="wrap_content"
@@ -54,6 +55,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
+    <!--@author Roope Kylli näyttää lääkkeen määrän-->
     <TextView
         android:id="@+id/drugAmountTextView"
         android:layout_width="wrap_content"
@@ -68,6 +70,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.3" />
 
+    <!--@author Roope Kylli näyttää lääkkeen hinnan-->
     <TextView
         android:id="@+id/drugPriceTextView"
         android:layout_width="wrap_content"
@@ -82,6 +85,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.18" />
 
+    <!--@author Emil Suuronen kuvaa visuaalisesti kuinka paljon lääkettä on jäljellä-->
     <ProgressBar
         android:id="@+id/amountProgressBar"
         style="?android:attr/progressBarStyleHorizontal"
@@ -97,6 +101,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.32999998" />
 
+    <!--@author Topias Koskinen nappi joka aiheuttaa lääkkeen ottamisen-->
     <Button
         android:id="@+id/takeDrugButton"
         android:layout_width="wrap_content"
@@ -113,6 +118,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.39" />
 
+    <!--@author Roope Kylli tähän laitetaan hälytyksen aika-->
     <EditText
         android:id="@+id/inputHour"
         android:layout_width="40dp"
@@ -130,6 +136,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.685" />
 
+    <!--@author Roope Kylli hälytyksen ajan kysely-->
     <TextView
         android:id="@+id/tvKysymys"
         android:layout_width="wrap_content"
