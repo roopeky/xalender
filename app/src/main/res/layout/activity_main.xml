@@ -7,7 +7,10 @@
     android:background="#303030"
     tools:context=".Activities.MainActivity">
 
+    <!--author Topias Koskinen-->
+
     <Button
+
         android:id="@+id/listAddButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

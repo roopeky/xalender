@@ -8,6 +8,7 @@
     android:background="#303030"
     tools:context=".Activities.DrugInfoActivity">
 
+<!--author Topias Koskinen-->
 
     <Button
         android:id="@+id/btCancelAlarm2"

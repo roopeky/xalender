@@ -7,6 +7,8 @@
     android:background="#303030"
     tools:context=".Activities.DrugAddActivity">
 
+    <!--author Topias Koskinen-->
+
     <EditText
         android:id="@+id/drugNameInput"
         android:layout_width="330dp"
