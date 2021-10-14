@@ -29,14 +29,13 @@ import java.text.DecimalFormat;
 
 public class DrugInfoActivity extends AppCompatActivity {
 
-    private TextView drugName;
-    private TextView drugAmount;
-    private TextView drugPrice;
-    private int taken;
-    int infoAmountOfDrug;
-    double infoPriceOfDrug;
+    private TextView drugName;   //tekstikenttä lääkkeen nimelle
+    private TextView drugAmount; //Tekstikenttä lääkkeen määrälle
+    private TextView drugPrice;  // tekstikenttä lääkkeen hinnalle
+    private int taken;           // kuvaa otettujen lääkkeiden määrää
+    int infoAmountOfDrug;        // muuttuja Drug-oliolta haetulle määrälle
+    double infoPriceOfDrug;      // muuttuja Drug-oliolta haetulle hinnalle
     private ProgressBar amountProgress;
-    private int i;
     private Button addButton;
     /**
      *
@@ -48,6 +47,18 @@ public class DrugInfoActivity extends AppCompatActivity {
 
     /**
      * Kutsutaan aktiviteetiin luonnin yhteydessä
+     * @Bundle b hakee aikasemmassa aktiviteetissä määritellyt extrat
+     * @int i hakee extroista avaimen EXTRA avulla määritellyn arvon, kertoo
+     * Drug olion sijainnin MainActivityn listvievillä
+     * @VALUE on avain jota käytetään SharedPreferences sp avaimena,
+     * @VALUE määritellään käytössä olevan Drug olion nimen mukaan
+     * @drugAmountEditable hakee käytössä olevan lääkkeen ja käyttää sitä listana
+     * @drugAmountEditable hakee käytössä olevan lääkkeen
+     * @infoPriceOfDrug hakee käytössä olevan lääkkeen hinnan
+     * int Taken arvo määritellään luomalla luomalla sharedPreferences sp,
+     * ja hakemalla sille arvo
+     * @DecimalFormat moneyFormat määritellään uusi formaatti, joka rajoittaa tulosteen 2 desimaaliin
+     *
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +89,14 @@ public class DrugInfoActivity extends AppCompatActivity {
         drugPrice.setText(infoPriceOfDrug + "€, Hinta/kpl: " + moneyFormat.format(infoPriceOfDrug / drugAmountStatic) + "€");
         amountProgress.setMax(drugAmountStatic);
         amountProgress.setProgress(drugAmountEditable[0] - taken);
+
+        /**
+         * Kuuntelija painikkeelle takeDrugButton
+         * Lisää +1 int taken arvoon
+         * asettaa tekstin drugAmount arvojen taken, drugAmountEditable, drugAmountStatic perusteella
+         * Asettaa ProgressBar amountProgressille Integer arvon drugAmountEditablen[] ja taken-arvon perusteella
+         * Tallentaa arvon taken SharedPreferences sp:hen
+         */
 
         Button addButton = (Button) findViewById(R.id.takeDrugButton);
         addButton.setOnClickListener(new View.OnClickListener() {
